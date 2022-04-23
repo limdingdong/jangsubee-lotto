@@ -60,6 +60,4 @@ class StringCalculatorTest {
         assertThatExceptionOfType(RuntimeException.class)
                 .isThrownBy(() -> calculator.add("-1"));
     }
-
-
 }
