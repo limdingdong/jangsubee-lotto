@@ -16,7 +16,7 @@ public class StringCalculator {
             return Integer.parseInt(text);
         }
 
-        StringTokenizer st = new StringTokenizer(text, ",");
+        StringTokenizer st = new StringTokenizer(text, ",|:");
         while (st.hasMoreTokens()) {
             sum += Integer.parseInt(st.nextToken());
         }
