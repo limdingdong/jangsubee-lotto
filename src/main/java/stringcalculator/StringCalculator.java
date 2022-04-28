@@ -11,9 +11,6 @@ public class StringCalculator {
     }
 
     private boolean isNullOrEmpty(String text) {
-        if (text == null || text.isEmpty()) {
-            return true;
-        }
-        return false;
+        return text == null || text.isEmpty();
     }
 }
