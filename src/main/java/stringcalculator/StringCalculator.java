@@ -7,7 +7,7 @@ public class StringCalculator {
     private static final int MIN_NUMBER = 0;
     private static final int SINGLE_INPUT_LENGTH = 1;
     private static final Pattern NUMERIC_PATTERN = Pattern.compile("[+-]?\\d*(\\.\\d+)?");
-    private static final String TOKEN_DELIMITER = ",";
+    private static final String TOKEN_DELIMITER = "[,|:]";
 
     public int add(final String text) {
         if (isNullOrEmpty(text)) {
