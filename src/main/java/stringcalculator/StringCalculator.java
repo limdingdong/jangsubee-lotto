@@ -51,7 +51,7 @@ public class StringCalculator {
 
     private int sum(String[] tokens) {
         return Arrays.stream(tokens)
-                .mapToInt(Integer::parseInt)
+                .mapToInt(UnsignedInteger::parseInt)
                 .sum();
     }
 }
