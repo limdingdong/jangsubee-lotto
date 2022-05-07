@@ -8,13 +8,17 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
-    private static final int ZERO = 0;
+    private static final int ZERO = Integer.MIN_VALUE;
     private static final int ONE_LENGTH = 1;
-    private static final int CUSTOMER_DELEMITER_INDEX = 1;
+    private static final int CUSTOMER_DELIMITER_INDEX = 1;
     private static final int NUMBER_INDEX = 2;
+    private static final String CUSTOM_DELIMITER = ",|:";
+    private static final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final String SLASH = "/";
+    private static final int NOT_FOUND_TEXT = -1;
 
     public int add(String text) {
-        int sum = 0;
+        int sum = ZERO;
 
         if (StringUtils.isBlank(text)) {
             return ZERO;
@@ -44,7 +48,7 @@ public class StringCalculator {
     }
 
     private int calculateSumByCommaOrColon(String text, int sum) {
-        StringTokenizer st = new StringTokenizer(text, ",|:");
+        StringTokenizer st = new StringTokenizer(text, CUSTOM_DELIMITER);
         while (st.hasMoreTokens()) {
             int inputNumber = Integer.parseInt(st.nextToken());
             checkNegativeNumber(inputNumber);
@@ -55,9 +59,9 @@ public class StringCalculator {
 
     private Integer calculateSumByCustomDelimiter(String text) {
         int resultNumber = 0;
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        Matcher m = CUSTOM_PATTERN.matcher(text);
         if (m.find()) {
-            String customDelimiter = m.group(CUSTOMER_DELEMITER_INDEX);
+            String customDelimiter = m.group(CUSTOMER_DELIMITER_INDEX);
             String[] tokens = m.group(NUMBER_INDEX).split(customDelimiter);
             resultNumber = Arrays.stream(tokens)
                     .mapToInt(it -> {
@@ -71,6 +75,6 @@ public class StringCalculator {
     }
 
     private boolean hasCustomDelimiterNumber(String text) {
-        return text.indexOf("/") != -1;
+        return text.indexOf(SLASH) != NOT_FOUND_TEXT;
     }
 }
