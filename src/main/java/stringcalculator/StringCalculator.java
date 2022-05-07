@@ -29,15 +29,18 @@ public class StringCalculator {
     private static boolean isNullOrEmpty(String text) {
         return text == null || text.isEmpty();
     }
+
     private static boolean isSingleInputInteger(String text) {
         if (text.length() != SINGLE_INPUT_LENGTH) {
             return false;
         }
         return isInteger(text);
     }
+
     private static boolean isInteger(String text) {
         return NUMERIC_PATTERN.matcher(text).matches();
     }
+
     private static String[] split(String text) {
         Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(text);
         if (matcher.find()) {
