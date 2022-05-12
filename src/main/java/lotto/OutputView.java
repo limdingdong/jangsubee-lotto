@@ -8,4 +8,7 @@ public class OutputView {
     public void printLotto(List<List> lottos){
         lottos.forEach(System.out::println);
     }
+
+    public void printResult(int[] result, Double yield) {
+    }
 }
