@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import exception.InputDataErrorCode;
+import exception.InputDataException;
+
 public final class Number {
     private static final int MIN_NUMBER = 0;
     private int number;
@@ -15,7 +18,7 @@ public final class Number {
 
     private void checkNegativeNumber(int number) {
         if (number < MIN_NUMBER) {
-            throw new IllegalArgumentException("음수는 입력할수 없습니다.");
+            throw new InputDataException(InputDataErrorCode.INPUT_NOT_NEGATIVE_NUMBER);
         }
     }
 }

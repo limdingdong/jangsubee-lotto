@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import exception.InputDataErrorCode;
+import exception.InputDataException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,7 +13,8 @@ class NumberTest {
     void negativeTest() {
         int inputNumber = -1;
         Assertions.assertThatThrownBy(() -> new Number(inputNumber))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(InputDataException.class)
+                .hasMessageContaining(InputDataErrorCode.INPUT_NOT_NEGATIVE_NUMBER.errorMessage());
     }
 
     @Test

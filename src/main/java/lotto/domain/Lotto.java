@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import exception.InputDataErrorCode;
+import exception.InputDataException;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,15 +21,15 @@ public final class Lotto {
 
     private void checkSixBalls(List<Ball> balls) {
         if (balls == null || balls.isEmpty()) {
-            throw new IllegalArgumentException("Lotto Data가 없습니다.");
+            throw new InputDataException(InputDataErrorCode.DATA_IS_EMPTY);
         }
 
         if (balls.size() != 6) {
-            throw new IllegalArgumentException("Lotto는 6개이어야합니다.");
+            throw new InputDataException(InputDataErrorCode.VALID_LOTTO_SIZE_SIX);
         }
 
         if (checkDuplicateNumber(balls)) {
-            throw new IllegalArgumentException("중복된 데이터가 있습니다.");
+            throw new InputDataException(InputDataErrorCode.THERE_IS_DUPLICATE_NUMBER);
         }
     }
 

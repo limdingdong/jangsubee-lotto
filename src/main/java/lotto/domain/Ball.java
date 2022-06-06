@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import exception.InputDataErrorCode;
+import exception.InputDataException;
+
 public final class Ball {
     private static final int FIRST_LOTTO_NUMBER = 1;
     private static final int LAST_LOTTO_NUMBER = 45;
@@ -21,7 +24,7 @@ public final class Ball {
     private void checkLottoNumber(Number number) {
         int ballNumber = number.number();
         if (!isLottoNumber(ballNumber)) {
-            throw new IllegalArgumentException("로또번호는 1이상 45이하 숫자만 가능합니다.");
+            throw new InputDataException(InputDataErrorCode.INVALID_RANGE_LOTTO_NUMBER);
         }
     }
 
