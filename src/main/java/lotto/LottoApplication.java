@@ -1,7 +1,10 @@
 package lotto;
 
+import lotto.controller.LottoGameController;
+import lotto.service.LottoGameService;
+
 public class LottoApplication {
     public static void main(String[] args) {
-        System.out.println("Hello Lotto NHS0912!!");
+        LottoGameController.;
     }
 }
