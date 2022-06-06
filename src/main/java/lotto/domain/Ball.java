@@ -1,6 +1,6 @@
 package lotto.domain;
 
-public class Ball {
+public final class Ball {
     private static final int FIRST_LOTTO_NUMBER = 1;
     private static final int LAST_LOTTO_NUMBER = 45;
     private Number number;

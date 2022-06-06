@@ -13,7 +13,7 @@ public class LottoGameController {
         int lottoCount = Seller.sellLotto(inputMoney);
 
         OutputView.displayLottoCount(lottoCount);
-        
+
 
     }
 }

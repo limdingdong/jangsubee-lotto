@@ -1,6 +1,6 @@
 package lotto.domain;
 
-public class Number {
+public final class Number {
     private static final int MIN_NUMBER = 0;
     private int number;
 
