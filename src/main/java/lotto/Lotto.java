@@ -34,7 +34,8 @@ public class Lotto {
                         + Prize.FIVE.getPrice() * result[5]
                         + Prize.SIX.getPrice() * result[6];
 
-        Double yield = Double.valueOf(totalPrize) / Double.valueOf(count*LOTTO_PRICE);
+        Double yield;
+        yield = Double.valueOf(totalPrize) / (double) (count * LOTTO_PRICE);
 
         return Math.floor(yield*100)/100.0;
     }
@@ -67,7 +68,7 @@ public class Lotto {
         List<Integer> lotto = new ArrayList<>();
 
         while(lotto.size() < 6){
-            int pick = random.nextInt(45);
+            int pick = random.nextInt(45)+1;
             if(lotto.stream().anyMatch(item->item.equals(pick))){ continue;}
             lotto.add(pick);
         }

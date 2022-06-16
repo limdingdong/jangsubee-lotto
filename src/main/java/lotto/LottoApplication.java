@@ -1,8 +1,12 @@
 package lotto;
 
-public class LottoApplication {
-    public static void main(String[] args) {
+import java.io.IOException;
 
-        System.out.println("오늘 6시전에 로또부터 사자!!!!!!");
+public class LottoApplication {
+    public static void main(String[] args) throws IOException {
+
+        Lotto lotto = new Lotto();
+        lotto.play();
+
     }
 }
