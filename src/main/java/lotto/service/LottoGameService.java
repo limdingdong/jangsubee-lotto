@@ -1,6 +1,12 @@
 package lotto.service;
 
-public class LottoGameService {
+public final class LottoGameService {
+
+    private int lottoCount;
+
+    public LottoGameService(int lottoCount) {
+        this.lottoCount = lottoCount;
+    }
 
 
 }

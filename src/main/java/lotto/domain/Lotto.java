@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public final class Lotto {
+    private static final int LOTTO_MAX_COUNT = 6;
     private List<Ball> balls;
 
     public Lotto(List<Ball> balls) {
@@ -24,7 +25,7 @@ public final class Lotto {
             throw new InputDataException(InputDataErrorCode.DATA_IS_EMPTY);
         }
 
-        if (balls.size() != 6) {
+        if (balls.size() != LOTTO_MAX_COUNT) {
             throw new InputDataException(InputDataErrorCode.VALID_LOTTO_SIZE_SIX);
         }
 
@@ -38,7 +39,15 @@ public final class Lotto {
                 .map(Ball::number)
                 .collect(Collectors.toList());
 
-        return new HashSet<>(numbers).size() != 6;
+        return new HashSet<>(numbers).size() != LOTTO_MAX_COUNT;
     }
 
+    @Override
+    public String toString() {
+        return this.balls.stream()
+                .map(ball -> ball.number())
+                .sorted()
+                .collect(Collectors.toList())
+                .toString();
+    }
 }

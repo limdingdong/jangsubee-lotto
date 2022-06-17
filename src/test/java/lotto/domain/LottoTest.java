@@ -41,6 +41,16 @@ class LottoTest {
     }
 
     @Test
+    @DisplayName("로또 Ball 5개만 입력하였을 경우")
+    void inputFiveLottoDataTest() {
+        assertThatThrownBy(() -> {
+            List<Ball> balls = Arrays.asList(new Ball(1), new Ball(2), new Ball(3), new Ball(4), new Ball(6));
+            Lotto lotto = new Lotto(balls);
+        }).isInstanceOf(InputDataException.class)
+                .hasMessageContaining(InputDataErrorCode.VALID_LOTTO_SIZE_SIX.errorMessage());
+    }
+
+    @Test
     @DisplayName("정상적으로 로또 데이터를 입력했을 경우")
     void inputLottoDataTest() {
         List<Ball> balls = Arrays.asList(new Ball(1), new Ball(2), new Ball(3), new Ball(4), new Ball(5), new Ball(6));
