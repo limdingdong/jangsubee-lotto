@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public final class Lotto {
     private static final int LOTTO_MAX_COUNT = 6;
-    private List<Ball> balls;
+    private final List<Ball> balls;
 
     public Lotto(List<Ball> balls) {
         checkSixBalls(balls);

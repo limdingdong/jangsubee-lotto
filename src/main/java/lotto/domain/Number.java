@@ -5,7 +5,7 @@ import exception.InputDataException;
 
 public final class Number {
     private static final int MIN_NUMBER = 0;
-    private int number;
+    private final int number;
 
     public Number(int number) {
         checkNegativeNumber(number);
