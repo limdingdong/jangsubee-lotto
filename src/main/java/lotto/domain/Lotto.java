@@ -20,6 +20,11 @@ public final class Lotto {
         return balls;
     }
 
+    public boolean isMatch(Lotto compareLotto) {
+        return this.balls.stream()
+                .allMatch(ballNumber -> compareLotto.isContainBall(ballNumber));
+    }
+
     private void checkSixBalls(List<Ball> balls) {
         if (balls == null || balls.isEmpty()) {
             throw new InputDataException(InputDataErrorCode.DATA_IS_EMPTY);
@@ -32,6 +37,11 @@ public final class Lotto {
         if (checkDuplicateNumber(balls)) {
             throw new InputDataException(InputDataErrorCode.THERE_IS_DUPLICATE_NUMBER);
         }
+    }
+
+    private boolean isContainBall(Ball ball) {
+        return this.balls.stream()
+                .anyMatch(ballNumber -> ballNumber.number() == ball.number());
     }
 
     private boolean checkDuplicateNumber(List<Ball> balls) {

@@ -12,7 +12,7 @@ public final class LottoService {
     private static final int LAST_INDEX_LOTTO = 6;
     private static final int FIRST_NUMBER_LOTTO = 1;
     private static final int LAST_NUMBER_LOTTO = 45;
-    private static final List<Ball> lottoBalls;
+    private static List<Ball> lottoBalls;
 
     private LottoService() {
     }
@@ -22,12 +22,17 @@ public final class LottoService {
     }
 
     public static Lotto createLotto() {
-        return new Lotto(shuffleLottoBalls());
+        Collections.shuffle(lottoBalls);
+        return new Lotto(makeNewBalls());
     }
 
-    private static List<Ball> shuffleLottoBalls() {
-        Collections.shuffle(lottoBalls);
-        return lottoBalls.subList(FIRST_INDEX_LOTTO, LAST_INDEX_LOTTO);
+    private static List<Ball> makeNewBalls() {
+        List<Ball> newLottoBalls = new ArrayList<>();
+        for (int i = 0; i < LAST_INDEX_LOTTO; i++) {
+            int number = lottoBalls.get(i).number();
+            newLottoBalls.add(new Ball(number));
+        }
+        return newLottoBalls;
     }
 
     private static List<Ball> createLottoBalls() {

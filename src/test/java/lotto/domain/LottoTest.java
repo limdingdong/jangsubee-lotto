@@ -57,4 +57,24 @@ class LottoTest {
         Lotto lotto = new Lotto(balls);
         assertThat(lotto.balls().size()).isEqualTo(6);
     }
+
+    @Test
+    @DisplayName("로또를 다른 로또와 비교해서 같은 경우")
+    void compareSameLottoTest(){
+        List<Ball> balls = Arrays.asList(new Ball(1), new Ball(2), new Ball(3), new Ball(4), new Ball(5), new Ball(6));
+        List<Ball> balls2 = Arrays.asList(new Ball(1), new Ball(2), new Ball(3), new Ball(4), new Ball(5), new Ball(6));
+        Lotto lotto = new Lotto(balls);
+        Lotto lotto2 = new Lotto(balls2);
+        assertThat(lotto.isMatch(lotto2)).isTrue();
+    }
+
+    @Test
+    @DisplayName("로또를 다른 로또와 비교해서 다른 경우")
+    void compareDiffrentLottoTest(){
+        List<Ball> balls = Arrays.asList(new Ball(1), new Ball(2), new Ball(3), new Ball(4), new Ball(5), new Ball(6));
+        List<Ball> balls2 = Arrays.asList(new Ball(1), new Ball(2), new Ball(3), new Ball(4), new Ball(5), new Ball(10));
+        Lotto lotto = new Lotto(balls);
+        Lotto lotto2 = new Lotto(balls2);
+        assertThat(lotto.isMatch(lotto2)).isFalse();
+    }
 }

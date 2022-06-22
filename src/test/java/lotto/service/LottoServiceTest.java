@@ -10,9 +10,17 @@ class LottoServiceTest {
 
     @Test
     @DisplayName("로또 생성 테스트")
-    void createLottoTest(){
+    void createLottoTest() {
         Lotto lotto = LottoService.createLotto();
         assertThat(lotto.balls().size()).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("로또 2개 생성 테스트")
+    void createTwoLottoTest() {
+        Lotto lotto = LottoService.createLotto();
+        Lotto lotto2 = LottoService.createLotto();
+        assertThat(lotto.balls().containsAll(lotto2.balls())).isFalse();
     }
 
 }
