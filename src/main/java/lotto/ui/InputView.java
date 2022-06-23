@@ -14,4 +14,14 @@ public class InputView {
         return Integer.parseInt(sc.nextLine());
     }
 
+    public static String inputFirstLottoNumber(){
+        System.out.println("1등 당첨번호를 입력해주세요.");
+        return sc.nextLine();
+    }
+
+    public static int inputBonusBall(){
+        System.out.println("bonus ball number 입력해주세요.");
+        return sc.nextInt();
+    }
+
 }
