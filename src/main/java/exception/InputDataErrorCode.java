@@ -6,7 +6,8 @@ public enum InputDataErrorCode {
     DATA_IS_EMPTY("[ERROR] Lotto Data가 없습니다."),
     INPUT_NOT_NEGATIVE_NUMBER("[ERROR] 음수는 입력할수 없습니다."),
     VALID_LOTTO_SIZE_SIX("[ERROR] 로또는 6개의 숫자가 있어야합니다."),
-    ALREADY_EXIST_BALL("[ERROR] 이미 로또안에 있는 볼입니다.");
+    ALREADY_EXIST_BALL("[ERROR] 이미 로또안에 있는 볼입니다."),
+    NOT_FOUND_RANK_INFO("[ERROR] 당첨 등수 정보가 없습니다.");
 
     private String errorMessage;
 
