@@ -8,18 +8,11 @@ import java.util.List;
 
 public final class LottoGameService {
 
-    private int lottoCount;
+    private LottoGameService() {
 
-    public LottoGameService(int lottoCount) {
-        this.lottoCount = lottoCount;
     }
 
-    public void start() {
-        Lottos lottos = this.buyLottos();
-        lottos.toString();
-    }
-
-    private Lottos buyLottos() {
+    public static Lottos buyLottos(int lottoCount) {
         List<Lotto> lottoBasket = new ArrayList<>();
         for (int i = 0; i < lottoCount; i++) {
             lottoBasket.add(LottoService.createLotto());

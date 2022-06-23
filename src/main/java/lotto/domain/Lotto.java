@@ -60,4 +60,6 @@ public final class Lotto {
                 .collect(Collectors.toList())
                 .toString();
     }
+
+
 }

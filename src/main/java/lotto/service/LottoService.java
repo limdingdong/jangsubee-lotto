@@ -5,7 +5,9 @@ import lotto.domain.Lotto;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public final class LottoService {
     private static final int FIRST_INDEX_LOTTO = 0;
@@ -32,7 +34,10 @@ public final class LottoService {
             int number = lottoBalls.get(i).number();
             newLottoBalls.add(new Ball(number));
         }
-        return newLottoBalls;
+
+        return newLottoBalls.stream()
+                .sorted(Comparator.comparingInt(Ball::number))
+                .collect(Collectors.toList());
     }
 
     private static List<Ball> createLottoBalls() {

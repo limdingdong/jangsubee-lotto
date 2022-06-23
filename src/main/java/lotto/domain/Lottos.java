@@ -11,6 +11,10 @@ public class Lottos implements Iterable<Lotto> {
         this.lottoBasket = lottoBasket;
     }
 
+    private StringBuilder cutLastComma(StringBuilder lottoText) {
+        return lottoText.delete(lottoText.lastIndexOf(","), lottoText.length());
+    }
+
     @Override
     public Iterator<Lotto> iterator() {
         return lottoBasket.iterator();
@@ -18,11 +22,18 @@ public class Lottos implements Iterable<Lotto> {
 
     @Override
     public String toString() {
+        StringBuilder lottoText = new StringBuilder();
         for (Lotto lotto : lottoBasket) {
-            lotto.balls().stream()
-                    .forEach(it -> System.out.print(it.number()+","));
-            System.out.println();
+            printLotto(lottoText, lotto);
         }
-        return null;
+        return lottoText.toString();
+    }
+
+    private void printLotto(StringBuilder lottoText, Lotto lotto) {
+        lottoText.append("[");
+        lotto.balls().stream()
+                .forEach(ball -> lottoText.append(ball.number() + ", "));
+        cutLastComma(lottoText);
+        lottoText.append("]\n");
     }
 }

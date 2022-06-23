@@ -5,7 +5,7 @@ import exception.InputDataException;
 
 import java.util.Objects;
 
-public final class Ball {
+public final class Ball implements Comparable<Number> {
     private static final int FIRST_LOTTO_NUMBER = 1;
     private static final int LAST_LOTTO_NUMBER = 45;
     private Number number;
@@ -45,5 +45,10 @@ public final class Ball {
     @Override
     public int hashCode() {
         return Objects.hash(number);
+    }
+
+    @Override
+    public int compareTo(Number o) {
+        return this.number() - o.number();
     }
 }
