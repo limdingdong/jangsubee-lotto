@@ -25,6 +25,11 @@ public final class Lotto {
                 .allMatch(ballNumber -> compareLotto.isContainBall(ballNumber));
     }
 
+    public boolean isMatchOneBall(Ball ball) {
+        return this.balls.stream()
+                .anyMatch(ballNumber -> ball.number() == ballNumber.number());
+    }
+
     private void checkSixBalls(List<Ball> balls) {
         if (balls == null || balls.isEmpty()) {
             throw new InputDataException(InputDataErrorCode.DATA_IS_EMPTY);
