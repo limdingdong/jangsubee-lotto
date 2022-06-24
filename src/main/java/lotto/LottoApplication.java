@@ -24,5 +24,7 @@ public class LottoApplication {
         System.out.println(winningLotto.toString());
 
 
+
+
     }
 }

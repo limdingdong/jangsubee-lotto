@@ -17,6 +17,10 @@ public class WinnerLotto {
         return winnerLotto;
     }
 
+    public Ball bonusBall() {
+        return bonusBall;
+    }
+
     private void checkAlreadyExistBonusBall(Ball bonusBall) {
         if (this.winnerLotto.isMatchOneBall(bonusBall)) {
             throw new InputDataException(InputDataErrorCode.ALREADY_EXIST_BALL);

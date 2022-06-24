@@ -19,4 +19,6 @@ public final class LottoGameService {
         }
         return new Lottos(lottoBasket);
     }
+
+
 }

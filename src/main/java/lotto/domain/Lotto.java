@@ -20,9 +20,21 @@ public final class Lotto {
         return balls;
     }
 
+    public int countMatchBall(Lotto compareLotto) {
+        return compareLotto.balls.stream()
+                .filter(compareBall -> this.balls.stream()
+                        .anyMatch(ball -> ball.number() == compareBall.number()))
+                .collect(Collectors.toList())
+                .size();
+    }
+
+    public boolean isMatchBonusBall(Ball bonusBall) {
+        return isMatchOneBall(bonusBall);
+    }
+
     public boolean isMatch(Lotto compareLotto) {
         return this.balls.stream()
-                .allMatch(ballNumber -> compareLotto.isContainBall(ballNumber));
+                .allMatch(ballNumber -> compareLotto.isMatchOneBall(ballNumber));
     }
 
     public boolean isMatchOneBall(Ball ball) {
@@ -42,11 +54,6 @@ public final class Lotto {
         if (checkDuplicateNumber(balls)) {
             throw new InputDataException(InputDataErrorCode.THERE_IS_DUPLICATE_NUMBER);
         }
-    }
-
-    private boolean isContainBall(Ball ball) {
-        return this.balls.stream()
-                .anyMatch(ballNumber -> ballNumber.number() == ball.number());
     }
 
     private boolean checkDuplicateNumber(List<Ball> balls) {
