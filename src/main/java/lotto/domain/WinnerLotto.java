@@ -13,18 +13,24 @@ public class WinnerLotto {
         this.bonusBall = bonusBall;
     }
 
-    public Lotto winnerLotto() {
-        return winnerLotto;
-    }
-
-    public Ball bonusBall() {
-        return bonusBall;
+    public boolean isContainBonusBall(Lotto lotto) {
+        return lotto.balls()
+                .stream()
+                .anyMatch(ball -> ball == this.bonusBall);
     }
 
     private void checkAlreadyExistBonusBall(Ball bonusBall) {
         if (this.winnerLotto.isMatchOneBall(bonusBall)) {
             throw new InputDataException(InputDataErrorCode.ALREADY_EXIST_BALL);
         }
+    }
+
+    public Lotto winnerLotto() {
+        return winnerLotto;
+    }
+
+    public Ball bonusBall() {
+        return bonusBall;
     }
 
     @Override

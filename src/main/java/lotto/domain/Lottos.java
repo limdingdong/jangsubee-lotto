@@ -29,6 +29,10 @@ public class Lottos implements Iterable<Lotto> {
         return lottoText.toString();
     }
 
+    public List<Lotto> getLottoBasket() {
+        return lottoBasket;
+    }
+
     private void printLotto(StringBuilder lottoText, Lotto lotto) {
         lottoText.append("[");
         lotto.balls().stream()

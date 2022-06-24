@@ -1,8 +1,5 @@
 package lotto.enums;
 
-import exception.InputDataErrorCode;
-import exception.InputDataException;
-
 public enum Rank {
     FIRST(6, 2_000_000_000, false),
     SECOND(5, 50_000_000, true),
@@ -27,7 +24,7 @@ public enum Rank {
                 return rank;
             }
         }
-        throw new InputDataException(InputDataErrorCode.NOT_FOUND_RANK_INFO);
+        return NOT_MATCH;
     }
 
     private static boolean isExistRank(int count, boolean isMatchBonusBall, Rank rank) {

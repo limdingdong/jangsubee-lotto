@@ -1,11 +1,13 @@
 package lotto.controller;
 
 import lotto.domain.*;
+import lotto.enums.Rank;
 import lotto.service.LottoGameService;
 import lotto.ui.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 public class LottoGameController {
@@ -32,5 +34,10 @@ public class LottoGameController {
 
         Lotto winnerLotto = new Lotto(winningBalls);
         return new WinnerLotto(winnerLotto, bonusBall);
+    }
+
+    public static Map<Rank, Integer> result(Lottos lottos, WinnerLotto winnerLotto) {
+        Map<Rank, Integer> rankIntegerMap = LottoGameService.calculateResult(lottos.getLottoBasket(), winnerLotto);
+        return rankIntegerMap;
     }
 }
