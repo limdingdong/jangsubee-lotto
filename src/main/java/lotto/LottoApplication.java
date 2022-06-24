@@ -12,8 +12,8 @@ import java.util.Map;
 
 public class LottoApplication {
     public static void main(String[] args) {
-
-        int lottoCount = LottoGameController.buyLotto();
+        int inputMoney = InputView.inputMoney();
+        int lottoCount = LottoGameController.buyLotto(inputMoney);
         OutputView.displayLottoCount(lottoCount);
 
         Lottos lottos = LottoGameController.createLotto(lottoCount);
@@ -28,7 +28,7 @@ public class LottoApplication {
 
         Map<Rank, Integer> result = LottoGameController.result(lottos, winningLotto);
 
-        OutputView.printResult(result);
+        OutputView.printResult(result, inputMoney);
 
 
     }

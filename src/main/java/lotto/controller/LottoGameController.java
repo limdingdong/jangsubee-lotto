@@ -3,7 +3,6 @@ package lotto.controller;
 import lotto.domain.*;
 import lotto.enums.Rank;
 import lotto.service.LottoGameService;
-import lotto.ui.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +14,7 @@ public class LottoGameController {
     private LottoGameController() {
     }
 
-    public static int buyLotto() {
-        int inputMoney = InputView.inputMoney();
+    public static int buyLotto(int inputMoney) {
         return Seller.sellLotto(inputMoney);
     }
 

@@ -19,13 +19,14 @@ public class OutputView {
         System.out.println(lottos.toString());
     }
 
-    public static void printResult(Map<Rank, Integer> result) {
+    public static void printResult(Map<Rank, Integer> result, int inputMoney) {
         StringBuilder sb = new StringBuilder();
         int fifthCount = changeRankResultCount(result.get(Rank.FIFTH));
         int fourthCount = changeRankResultCount(result.get(Rank.FOURTH));
         int thirdCount = changeRankResultCount(result.get(Rank.THIRD));
         int secondCount = changeRankResultCount(result.get(Rank.SECOND));
         int firstCount = changeRankResultCount(result.get(Rank.FIRST));
+
         sb.append("당첨 통계\n");
         sb.append("---------------\n");
         sb.append("3개 일치(" + Rank.FIFTH.getAmount() + ") - " + fifthCount + "개\n");
@@ -35,7 +36,14 @@ public class OutputView {
         sb.append("6개 일치(" + Rank.FIRST.getAmount() + ") - " + firstCount + "개\n");
         System.out.println(sb.toString());
 
+        int sum = 0;
+        sum += fifthCount * Rank.FIFTH.getAmount();
+        sum += fourthCount * Rank.FOURTH.getAmount();
+        sum += thirdCount * Rank.THIRD.getAmount();
+        sum += secondCount * Rank.SECOND.getAmount();
+        sum += firstCount * Rank.FIRST.getAmount();
 
+        System.out.println("총 수익률은" + (inputMoney / sum) + "입니다.(기준이 1이기 때문에 결과적으로 손해라는 의미임)");
     }
 
     private static int changeRankResultCount(Integer count) {
